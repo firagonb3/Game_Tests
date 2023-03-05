@@ -11,11 +11,16 @@ onready var motion : Vector2 = Vector2.ZERO
 onready var can_move : bool = true
 onready var direction : int = 1
 
+onready var idle := $sprite/idle
+onready var Walk := $sprite/Walk
+onready var animation := $sprite/animation
+
+
 onready var pause := 0
 onready var start := 0
 
 func _ready():
-	$sprite/animation.play("walk")
+	animation.play("walk")
 	pass 
 
 func _process(_delta):
@@ -24,9 +29,9 @@ func _process(_delta):
 	else:
 		start += 1
 		if (start == START):
-			$sprite/idle.hide()
-			$sprite/Walk.show()
-			$sprite/animation.play("walk")
+			idle.hide()
+			Walk.show()
+			animation.play("walk")
 			start = 0
 			pause = 0
 			can_move = true
@@ -35,17 +40,17 @@ func _process(_delta):
 func motion_ctrl() -> void:
 	pause += 1
 	if (pause == PAUSE):
-		$sprite/idle.show()
-		$sprite/Walk.hide()
-		$sprite/animation.play("idle")
+		idle.show()
+		Walk.hide()
+		animation.play("idle")
 		can_move = false
 	
 	if direction == 1:
-		$sprite/idle.flip_h = false
-		$sprite/Walk.flip_h = false
+		idle.flip_h = false
+		Walk.flip_h = false
 	else:
-		$sprite/idle.flip_h = true
-		$sprite/Walk.flip_h = true
+		idle.flip_h = true
+		Walk.flip_h = true
 	
 	if is_on_wall():
 		direction *= -1
