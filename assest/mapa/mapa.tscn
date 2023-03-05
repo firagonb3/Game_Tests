@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assest/mapa/plataformas_mapa.tres" type="TileSet" id=1]
+[ext_resource path="res://assest/mapa/mapa.tres" type="TileSet" id=2]
+
+[node name="mapa" type="Node2D"]
+
+[node name="mapa" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 512, 512 )
+format = 1
+
+[node name="plataformas_mapa" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 512, 512 )
+format = 1
+tile_data = PoolIntArray( -327678, 9, 0, -327677, 9, 0, -327676, 9, 0, -327675, 3, 0, -262144, 0, 0, -262142, 9, 0, -262141, 9, 0, -262140, 9, 0, -262139, 7, 0, -196605, 0, 0, -196604, 1, 0, -196603, 2, 0, -131071, 8, 0, -131070, 9, 0, -131068, 12, 0, -131067, 13, 0, -131066, 13, 0, -131065, 13, 0, -131064, 13, 0, -131063, 13, 0, -131062, 15, 0, -65536, 12, 0, -65535, 14, 0, -65534, 14, 0, -65533, 14, 0, -65532, 14, 0, -65531, 14, 0, -65530, 14, 0, -65529, 15, 0 )
