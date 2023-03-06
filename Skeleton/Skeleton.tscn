@@ -133,7 +133,6 @@ texture = ExtResource( 4 )
 hframes = 8
 
 [node name="Walk" type="Sprite" parent="sprite"]
-visible = false
 scale = Vector2( 7.508, 5.628 )
 texture = ExtResource( 1 )
 hframes = 4

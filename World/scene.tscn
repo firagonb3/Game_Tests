@@ -197,9 +197,6 @@ max_speed = 1000.0
 gravity_acceleration = 3840.0
 gravity_max = 2020.0
 jump_force = 3200.0
-jump_hang_treshold = 2.0
-jump_coyote = 0.08
-jump_buffer = 0.1
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2( 0, 1 )

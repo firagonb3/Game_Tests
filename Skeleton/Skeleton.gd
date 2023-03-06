@@ -4,7 +4,7 @@ const FLOOR = Vector2(0,-1)
 const GRAVITY  = 25.0
 const SPEED  = 800
 
-onready var PAUSE = 1000
+onready var PAUSE2 = 1000
 const START = 500
 
 onready var motion : Vector2 = Vector2.ZERO
@@ -17,6 +17,7 @@ onready var Attack := $sprite/Attack
 onready var animation := $sprite/animation
 
 onready var detecter_player := $raycast/detecter_player
+onready var detecter_attak := false
 
 onready var pause := 0
 onready var start := 0
@@ -28,13 +29,20 @@ func _ready():
 func _process(_delta):
 	if detecter_player.is_colliding():
 		can_move = false
+		detecter_attak = true
 		idle.hide()
 		Walk.hide()
 		Attack.show()
 		animation.play("Attack")
-	else: 
+	elif detecter_attak:
+		detecter_attak = false
+		can_move = true
 		Attack.hide()
-		reset()
+		idle.hide()
+		Walk.show()
+		pause = 0
+		start = 0
+		animation.play("walk")
 		
 	if can_move:
 		motion_ctrl()
@@ -43,23 +51,14 @@ func _process(_delta):
 		if (start == START):
 			idle.hide()
 			Walk.show()
-			animation.play("walk")
 			start = 0
 			pause = 0
 			can_move = true
-		
-
-func reset():
-	idle.hide()
-	Walk.show()
-	animation.play("walk")
-	start = 0
-	pause = 0
-	can_move = true
+	
 
 func motion_ctrl() -> void:
 	pause += 1
-	if (pause == PAUSE):
+	if (pause == PAUSE2):
 		idle.show()
 		Walk.hide()
 		animation.play("idle")
