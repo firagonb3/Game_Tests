@@ -54,6 +54,7 @@ func _process(_delta):
 			start = 0
 			pause = 0
 			can_move = true
+			animation.play("walk")
 	
 
 func motion_ctrl() -> void:
