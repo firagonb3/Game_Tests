@@ -44,7 +44,7 @@ func _process(_delta: float) -> void:
 func animate_ctrl() -> void: 
 	if Input.is_action_pressed("jump") and not (previous_frame_velocity.y > 0 and Player.is_on_floor()):
 		_jump()
-	elif Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_left"):
+	elif Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_left") and not (previous_frame_velocity.y > 0 and Player.is_on_floor()):
 		jump.hide()
 		run.show()
 		idle.hide()
@@ -58,17 +58,13 @@ func animate_ctrl() -> void:
 		animate.play("idle")
 
 func _jump():
-	print(previous_frame_velocity.y)
-	print(previous_frame_velocity.y >= 0 )
 	if previous_frame_velocity.y >= 0 and Player.velocity.y < 0:
 		jump.show()
 		idle.hide()
 		run.hide()
 		Attack.hide()
-		print("cosa2")
 		animate.play("Jump")
 	elif previous_frame_velocity.y > 0 and Player.is_on_floor():
-		print("cosa3")
 		Attack.hide()
 		idle.show()
 		animate.play("idle")

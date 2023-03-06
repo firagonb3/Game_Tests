@@ -16,10 +16,14 @@ onready var Walk := $sprite/Walk
 onready var Attack := $sprite/Attack
 onready var animation := $sprite/animation
 
+onready var hit := $raycast/detecter_hit
+
 onready var detecter_player := $raycast/detecter_player
 onready var detecter_attak := false
 
 onready var max_heal := 2
+
+onready var hit_detectet := false
 
 onready var pause := 0
 onready var start := 0
@@ -29,6 +33,10 @@ func _ready():
 	pass 
 
 func _process(_delta):
+	if hit.is_colliding() and hit_detectet == false:
+			hit_detectet = true
+			print("cosa")
+			
 	if detecter_player.is_colliding():
 		can_move = false
 		detecter_attak = true
