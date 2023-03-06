@@ -19,6 +19,8 @@ onready var animation := $sprite/animation
 onready var detecter_player := $raycast/detecter_player
 onready var detecter_attak := false
 
+onready var max_heal := 2
+
 onready var pause := 0
 onready var start := 0
 

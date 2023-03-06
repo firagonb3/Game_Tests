@@ -39,6 +39,7 @@ var jump_buffer_timer : float = 0
 var is_jumping := false
 # ----------------------------------- #
 
+export var max_heal := 10
 
 # All iputs we want to keep track of
 func get_input() -> Dictionary:
