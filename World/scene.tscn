@@ -1,16 +1,16 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://World/World.gd" type="Script" id=1]
+[ext_resource path="res://assest/mapa/mapa.tres" type="TileSet" id=1]
 [ext_resource path="res://Platforms/TileMap.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assest/mapa/mapa.tres" type="TileSet" id=3]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assest/mapa/Mossy - Decorations&Hazards.png" type="Texture" id=5]
-[ext_resource path="res://Skeleton/Skeleton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Skeleton/Skeleton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://World/World.gd" type="Script" id=5]
+[ext_resource path="res://assest/mapa/Mossy - Decorations&Hazards.png" type="Texture" id=6]
 [ext_resource path="res://assest/Background_0.png" type="Texture" id=7]
 
 [sub_resource type="TileSet" id=1]
 0/name = "Mossy - Decorations&Hazards.png 0"
-0/texture = ExtResource( 5 )
+0/texture = ExtResource( 6 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 224, 192, 1312, 704 )
@@ -24,7 +24,7 @@
 0/shapes = [  ]
 0/z_index = 0
 1/name = "Mossy - Decorations&Hazards.png 1"
-1/texture = ExtResource( 5 )
+1/texture = ExtResource( 6 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 2880, -192, 1056, 1120 )
@@ -38,7 +38,7 @@
 1/shapes = [  ]
 1/z_index = 0
 2/name = "Mossy - Decorations&Hazards.png 2"
-2/texture = ExtResource( 5 )
+2/texture = ExtResource( 6 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
 2/region = Rect2( 1600, 288, 1152, 608 )
@@ -52,7 +52,7 @@
 2/shapes = [  ]
 2/z_index = 0
 3/name = "Mossy - Decorations&Hazards.png 3"
-3/texture = ExtResource( 5 )
+3/texture = ExtResource( 6 )
 3/tex_offset = Vector2( 0, 0 )
 3/modulate = Color( 1, 1, 1, 1 )
 3/region = Rect2( 2080, 2560, 448, 1472 )
@@ -66,7 +66,7 @@
 3/shapes = [  ]
 3/z_index = 0
 4/name = "Mossy - Decorations&Hazards.png 4"
-4/texture = ExtResource( 5 )
+4/texture = ExtResource( 6 )
 4/tex_offset = Vector2( 0, 0 )
 4/modulate = Color( 1, 1, 1, 1 )
 4/region = Rect2( 2592, 2560, 448, 1472 )
@@ -80,7 +80,7 @@
 4/shapes = [  ]
 4/z_index = 0
 5/name = "Mossy - Decorations&Hazards.png 5"
-5/texture = ExtResource( 5 )
+5/texture = ExtResource( 6 )
 5/tex_offset = Vector2( 0, 0 )
 5/modulate = Color( 1, 1, 1, 1 )
 5/region = Rect2( 3072, 2560, 480, 1472 )
@@ -94,7 +94,7 @@
 5/shapes = [  ]
 5/z_index = 0
 6/name = "Mossy - Decorations&Hazards.png 6"
-6/texture = ExtResource( 5 )
+6/texture = ExtResource( 6 )
 6/tex_offset = Vector2( 0, 0 )
 6/modulate = Color( 1, 1, 1, 1 )
 6/region = Rect2( 3712, 2528, 256, 1536 )
@@ -108,7 +108,7 @@
 6/shapes = [  ]
 6/z_index = 0
 7/name = "Mossy - Decorations&Hazards.png 7"
-7/texture = ExtResource( 5 )
+7/texture = ExtResource( 6 )
 7/tex_offset = Vector2( 0, 0 )
 7/modulate = Color( 1, 1, 1, 1 )
 7/region = Rect2( 1600, 2912, 416, 608 )
@@ -123,7 +123,7 @@
 7/z_index = 0
 
 [node name="escene" type="Node2D"]
-script = ExtResource( 1 )
+script = ExtResource( 5 )
 
 [node name="world" type="Node" parent="."]
 
@@ -141,7 +141,7 @@ color = Color( 0.101961, 0.0901961, 0.286275, 1 )
 modulate = Color( 0.929412, 0.929412, 0.929412, 1 )
 light_mask = 0
 z_index = 2
-tile_set = ExtResource( 3 )
+tile_set = ExtResource( 1 )
 cell_size = Vector2( 512, 512 )
 cell_quadrant_size = 128
 collision_layer = 8
@@ -188,15 +188,18 @@ collision_use_parent = false
 collision_mask = 8
 occluder_light_mask = 8
 
-[node name="Player" parent="." instance=ExtResource( 4 )]
+[node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( -1067, 394 )
 z_index = 1
-collision_layer = 0
+collision_layer = 16
 collision_mask = 8
 max_speed = 1000.0
 gravity_acceleration = 3840.0
 gravity_max = 2020.0
 jump_force = 3200.0
+jump_hang_treshold = 2.0
+jump_coyote = 0.08
+jump_buffer = 0.1
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2( 0, 1 )
@@ -210,8 +213,8 @@ position = Vector2( 967, 733 )
 scale = Vector2( 3.76693, 4.13221 )
 texture = ExtResource( 7 )
 
-[node name="Skeleton" parent="." instance=ExtResource( 6 )]
+[node name="Skeleton" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1637, -778 )
 
-[node name="Skeleton2" parent="." instance=ExtResource( 6 )]
+[node name="Skeleton2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 4481, -63 )

@@ -1,13 +1,31 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/Sprite.gd" type="Script" id=2]
 [ext_resource path="res://assest/120x80_PNGSheets/_Idle.png" type="Texture" id=3]
 [ext_resource path="res://assest/120x80_PNGSheets/_Jump.png" type="Texture" id=4]
 [ext_resource path="res://assest/120x80_PNGSheets/_Run.png" type="Texture" id=5]
+[ext_resource path="res://assest/120x80_PNGSheets/_AttackNoMovement.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 103.563, 139 )
+
+[sub_resource type="Animation" id=9]
+resource_name = "Attack"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Attack:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
 
 [sub_resource type="Animation" id=7]
 resource_name = "Jump"
@@ -58,6 +76,18 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Attack:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -137,7 +167,15 @@ scale = Vector2( 9.641, 7.372 )
 texture = ExtResource( 4 )
 hframes = 3
 
+[node name="Attack" type="Sprite" parent="Sprite"]
+visible = false
+position = Vector2( 51, -156 )
+scale = Vector2( 9.641, 7.372 )
+texture = ExtResource( 6 )
+hframes = 4
+
 [node name="animate" type="AnimationPlayer" parent="Sprite"]
+anims/Attack = SubResource( 9 )
 anims/Jump = SubResource( 7 )
 anims/RESET = SubResource( 6 )
 anims/idle = SubResource( 5 )
