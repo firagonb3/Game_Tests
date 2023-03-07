@@ -21,22 +21,21 @@ onready var hit := $raycast/detecter_hit
 onready var detecter_player := $raycast/detecter_player
 onready var detecter_attak := false
 
-onready var max_heal := 2
-
-onready var hit_detectet := false
+onready var player
 
 onready var pause := 0
 onready var start := 0
 
+
 func _ready():
 	animation.play("walk")
-	pass 
+	pass
 
 func _process(_delta):
-	if hit.is_colliding() and hit_detectet == false:
-			hit_detectet = true
-			print("cosa")
-			
+	if hit.is_colliding():
+				#hit_detectet = true
+				player.damag()  
+	
 	if detecter_player.is_colliding():
 		can_move = false
 		detecter_attak = true
@@ -92,3 +91,9 @@ func motion_ctrl() -> void:
 	motion.x = SPEED * direction
 	
 	motion = move_and_slide(motion, FLOOR)
+
+
+func _on_Area2D_body_entered(body):
+	if "Player" in body.name:
+		player = body 
+		

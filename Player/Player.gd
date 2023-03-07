@@ -39,8 +39,25 @@ var jump_buffer_timer : float = 0
 var is_jumping := false
 # ----------------------------------- #
 
-export var max_heal := 10
+export var max_heal := 3
+export var detected_hit := false
 
+export var deah := false
+
+const SLEEP = 50
+var sleep = 0
+
+func damag():
+	if detected_hit == false and max_heal > 0:
+		detected_hit = true
+		max_heal -= 1
+		$Sprite/Hit.show()
+		$Sprite/Idle.hide()
+		$Sprite/Jump.hide()
+		$Sprite/Run.hide()
+		$Sprite/Attack.hide()
+		print(max_heal) 
+	
 # All iputs we want to keep track of
 func get_input() -> Dictionary:
 	return {
@@ -53,12 +70,32 @@ func get_input() -> Dictionary:
 
 
 func _physics_process(delta: float) -> void:
-	x_movement(delta)
-	jump_logic(delta)
-	apply_gravity(delta)
+	if detected_hit:
+		#print(sleep)
+		sleep += 1
+		
+	if SLEEP == sleep:
+		sleep = 0
+		$Sprite/Hit.hide()
+		detected_hit = false
 	
-	timers(delta)
-	apply_velocity()
+	if max_heal <= 0 and deah == false:
+		$Sprite/Hit.hide()
+		$Sprite/Idle.hide()
+		$Sprite/Jump.hide()
+		$Sprite/Run.hide()
+		$Sprite/Attack.hide()
+		$Sprite/Death.show()
+		$Sprite/animate.play("deah") 
+		deah = true
+	
+	if deah == false:
+		x_movement(delta)
+		jump_logic(delta)
+		apply_gravity(delta)
+		
+		timers(delta)
+		apply_velocity()
 
 
 func apply_velocity() -> void:
