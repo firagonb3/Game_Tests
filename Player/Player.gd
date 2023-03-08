@@ -70,6 +70,7 @@ func get_input() -> Dictionary:
 
 
 func _physics_process(delta: float) -> void:
+	
 	if detected_hit:
 		#print(sleep)
 		sleep += 1
@@ -200,4 +201,3 @@ func timers(delta: float) -> void:
 	# This way everything is contained in just 1 script with no node requirements
 	jump_coyote_timer -= delta
 	jump_buffer_timer -= delta
-

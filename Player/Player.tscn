@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/Sprite.gd" type="Script" id=2]
@@ -11,6 +11,9 @@
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 103.563, 139 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 163.5, 130.75 )
 
 [sub_resource type="Animation" id=9]
 resource_name = "Attack"
@@ -26,6 +29,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../attack/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, false, true ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -105,6 +120,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [ 0 ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("../attack/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=10]
 resource_name = "deah"
@@ -168,6 +195,15 @@ jump_hang_gravity_mult = 0.05
 [node name="platyerColison" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
 
+[node name="attack" type="Area2D" parent="." groups=["attack"]]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attack"]
+position = Vector2( 323.5, 1.75 )
+shape = SubResource( 11 )
+disabled = true
+
 [node name="Sprite" type="Node2D" parent="."]
 script = ExtResource( 2 )
 player_path = NodePath("..")
@@ -186,6 +222,7 @@ texture = ExtResource( 5 )
 hframes = 10
 
 [node name="Idle" type="Sprite" parent="Sprite"]
+visible = false
 position = Vector2( 51, -156 )
 scale = Vector2( 9.64063, 7.37188 )
 texture = ExtResource( 3 )
@@ -199,7 +236,6 @@ texture = ExtResource( 4 )
 hframes = 3
 
 [node name="Attack" type="Sprite" parent="Sprite"]
-visible = false
 position = Vector2( 51, -156 )
 scale = Vector2( 9.641, 7.372 )
 texture = ExtResource( 6 )
