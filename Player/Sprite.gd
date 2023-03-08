@@ -17,8 +17,6 @@ onready var death := $Death
 
 onready var Attack := $Attack
 
-onready var previous_frame_velocity := Vector2(0,0)
-
 onready var animation_ctrl := true
 
 # Avoid errors
@@ -46,31 +44,20 @@ func _process(_delta: float) -> void:
 
 func animate_ctrl() -> void: 
 	if Input.is_action_pressed("jump") and !Player.is_on_floor():
-		_jump()
-	elif Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_left"):
-		jump.hide()
-		run.show()
-		idle.hide()
-		Attack.hide()
-		animate.play("run")
-	else:
-		jump.hide()
-		run.hide()
-		idle.show()
-		Attack.hide()
-		animate.play("idle")
-
-func _jump():
-	if previous_frame_velocity.y >= 0:
 		jump.show()
 		idle.hide()
 		run.hide()
 		Attack.hide()
 		animate.play("Jump")
-	elif previous_frame_velocity.y > 0 and Player.is_on_floor():
+	elif (Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_left")) and Player.is_on_floor():
+		jump.hide()
+		run.show()
+		idle.hide()
 		Attack.hide()
+		animate.play("run")
+	elif Player.is_on_floor():
+		jump.hide()
+		run.hide()
 		idle.show()
+		Attack.hide()
 		animate.play("idle")
-	
-	# It's important that this is the last thing done
-	previous_frame_velocity = Player.velocity
