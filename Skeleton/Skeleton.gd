@@ -4,12 +4,12 @@ const FLOOR = Vector2(0,-1)
 const GRAVITY  = 25.0
 const SPEED  = 800
 
-onready var PAUSE2 = 1000
+export var PAUSE2 = 1000
 const START = 500
 
 onready var motion : Vector2 = Vector2.ZERO
 onready var can_move : bool = true
-onready var direction : int = 1
+export var direction : int = 1
 
 onready var idle := $sprite/idle
 onready var Walk := $sprite/Walk
@@ -44,6 +44,7 @@ func damage():
 		animation.play("death")
 
 func _ready():
+	$raycast.scale.x = direction
 	animation.play("walk")
 	pass
 
@@ -105,11 +106,10 @@ func motion_ctrl() -> void:
 	
 	if is_on_wall():
 		direction *= -1
-		$raycast.scale.x *= -1
-	
+		$raycast.scale.x = direction
+		
 	motion.y += GRAVITY
 	motion.x = SPEED * direction
-	
 	motion = move_and_slide(motion, FLOOR)
 
 
