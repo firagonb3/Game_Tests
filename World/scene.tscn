@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assest/mapa/mapa.tres" type="TileSet" id=1]
 [ext_resource path="res://World/Colision.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assest/mapa/Mossy - Decorations&Hazards.png" type="Texture" id=6]
 [ext_resource path="res://assest/Background_0.png" type="Texture" id=7]
 [ext_resource path="res://Player/Heats.tscn" type="PackedScene" id=8]
+[ext_resource path="res://kindpng_4465833.png" type="Texture" id=9]
 
 [sub_resource type="TileSet" id=1]
 0/name = "Mossy - Decorations&Hazards.png 0"
@@ -125,6 +126,12 @@
 
 [node name="escene" type="Node2D"]
 script = ExtResource( 5 )
+
+[node name="Kindpng4465833" type="Sprite" parent="."]
+position = Vector2( 6711, 395 )
+scale = Vector2( 1.45113, 1.29552 )
+texture = ExtResource( 9 )
+hframes = 6
 
 [node name="world" type="Node" parent="."]
 
