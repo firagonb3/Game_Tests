@@ -192,6 +192,20 @@
 12/shape_one_way_margin = 0.0
 12/shapes = [  ]
 12/z_index = 0
+13/name = "Mossy - Decorations&Hazards.png 13"
+13/texture = ExtResource( 7 )
+13/tex_offset = Vector2( 0, 0 )
+13/modulate = Color( 1, 1, 1, 1 )
+13/region = Rect2( 96, 2304, 288, 608 )
+13/tile_mode = 0
+13/occluder_offset = Vector2( 0, 0 )
+13/navigation_offset = Vector2( 0, 0 )
+13/shape_offset = Vector2( 0, 0 )
+13/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+13/shape_one_way = false
+13/shape_one_way_margin = 0.0
+13/shapes = [  ]
+13/z_index = 0
 
 [node name="escene" type="Node2D"]
 script = ExtResource( 6 )
@@ -225,7 +239,7 @@ tile_data = PoolIntArray( -720906, 8, 0, -720905, 8, 0, -720904, 8, 0, -720903, 
 tile_set = SubResource( 1 )
 cell_size = Vector2( 512, 512 )
 format = 1
-tile_data = PoolIntArray( -458758, 1, 0, -327684, 12, 0, -327681, 2, 0, -393215, 7, 0, -393204, 7, 0, -327667, 8, 0, -196605, 1, 0, -131070, 7, 0, -65533, 4, 0, 65534, 0, 0, 1, 7, 0, 6, 7, 0, 8, 7, 0, 10, 2, 0 )
+tile_data = PoolIntArray( -458758, 1, 0, -393221, 13, 0, -327684, 12, 0, -327681, 2, 0, -393215, 13, 0, -393206, 0, 0, -393204, 13, 0, -327667, 8, 0, -262137, 13, 0, -196605, 1, 0, -131070, 7, 0, -131069, 13, 0, -65533, 4, 0, 65534, 0, 0, 1, 13, 0, 5, 13, 0, 6, 7, 0, 8, 7, 0, 10, 2, 0, 13, 13, 0 )
 
 [node name="colisions" type="Node" parent="world"]
 
