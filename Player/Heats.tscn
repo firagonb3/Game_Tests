@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assest/Heart UI - JAR Inc/Life_UI_007.png" type="Texture" id=1]
+[ext_resource path="res://Player/Heats.gd" type="Script" id=2]
+
+[node name="Heats" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="gui" type="CanvasLayer" parent="."]
+
+[node name="heat" type="Sprite" parent="gui"]
+position = Vector2( 57.4375, 124.114 )
+scale = Vector2( 0.17425, 0.203626 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, -372.929 )
+hframes = 3
+
+[node name="heat2" type="Sprite" parent="gui"]
+position = Vector2( 130, 124.114 )
+scale = Vector2( 0.17425, 0.203626 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, -372.929 )
+hframes = 3
+
+[node name="heat3" type="Sprite" parent="gui"]
+position = Vector2( 203, 124.114 )
+scale = Vector2( 0.17425, 0.203626 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, -372.929 )
+hframes = 3

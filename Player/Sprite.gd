@@ -21,6 +21,7 @@ onready var animation_ctrl := true
 
 # Avoid errors
 func _ready() -> void:
+	print(Player)
 	if Player == null:
 		print("Sprite.gd is missing player_path")
 		set_process(false)

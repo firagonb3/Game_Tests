@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assest/mapa/mapa.tres" type="TileSet" id=1]
 [ext_resource path="res://World/Colision.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://World/World.gd" type="Script" id=5]
 [ext_resource path="res://assest/mapa/Mossy - Decorations&Hazards.png" type="Texture" id=6]
 [ext_resource path="res://assest/Background_0.png" type="Texture" id=7]
+[ext_resource path="res://Player/Heats.tscn" type="PackedScene" id=8]
 
 [sub_resource type="TileSet" id=1]
 0/name = "Mossy - Decorations&Hazards.png 0"
@@ -210,10 +211,19 @@ position = Vector2( 967, 733 )
 scale = Vector2( 3.76693, 4.13221 )
 texture = ExtResource( 7 )
 
-[node name="Skeleton" parent="." instance=ExtResource( 4 )]
+[node name="Heats" parent="Player/Camera2D/ParallaxBackground" instance=ExtResource( 8 )]
+light_mask = 512
+margin_left = 5.0
+margin_top = -30.0
+margin_right = -3.0
+margin_bottom = 26.0
+
+[node name="mobs" type="Node" parent="."]
+
+[node name="Skeleton" parent="mobs" instance=ExtResource( 4 )]
 position = Vector2( 1637, -778 )
 collision_layer = 0
 
-[node name="Skeleton2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 3774, 435 )
+[node name="Skeleton2" parent="mobs" instance=ExtResource( 4 )]
+position = Vector2( 3221, 365 )
 collision_layer = 0
