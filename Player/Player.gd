@@ -43,9 +43,14 @@ export var max_heal := 3
 export var detected_hit := false
 
 export var deah := false
+var fin := false
+
+var count := 0
 
 const SLEEP = 50
 var sleep = 0
+
+
 
 func damag():
 	if detected_hit == false and max_heal > 0:

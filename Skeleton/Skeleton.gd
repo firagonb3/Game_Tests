@@ -36,6 +36,7 @@ var deah = false
 func damage():
 	max_heal -= 1
 	if max_heal < 0:
+		player.count += 1
 		deah = true
 		idle.hide()
 		Walk.hide()
